@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: 'Space Grotesk', var(--font-sans);
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Tech Dark Theme */
+    --color-background: oklch(0.12 0.02 260);
+    --color-foreground: oklch(0.95 0.02 260);
+    --color-card: oklch(0.15 0.03 260);
+    --color-card-foreground: oklch(0.95 0.02 260);
+    --color-popover: oklch(0.12 0.02 260);
+    --color-popover-foreground: oklch(0.95 0.02 260);
+    --color-primary: oklch(0.7 0.2 200); /* Cyan/Electric Blue */
+    --color-primary-foreground: oklch(0.1 0.02 260);
+    --color-secondary: oklch(0.2 0.05 260);
+    --color-secondary-foreground: oklch(0.9 0.05 260);
+    --color-muted: oklch(0.2 0.04 260);
+    --color-muted-foreground: oklch(0.6 0.05 260);
+    --color-accent: oklch(0.25 0.08 260);
+    --color-accent-foreground: oklch(0.95 0.02 260);
+    --color-destructive: oklch(0.5 0.2 20);
+    --color-border: oklch(0.25 0.04 260);
+    --color-input: oklch(0.2 0.04 260);
+    --color-ring: oklch(0.7 0.2 200);
+    
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in oklch, var(--color-ring), transparent 50%);
+    }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary;
+    background-image: 
+      radial-gradient(at 0% 0%, oklch(0.2 0.1 200 / 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, oklch(0.2 0.1 260 / 0.15) 0px, transparent 50%);
+    }
+  html {
+    @apply scroll-smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+/* Custom Utilities */
+.glass {
+  @apply bg-background/40 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+}
+
+.tech-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, oklch(1 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px oklch(var(--color-primary) / 0.5);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
