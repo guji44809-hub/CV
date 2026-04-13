@@ -11,25 +11,25 @@
     --font-sans: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     
-    /* Tech Dark Theme */
-    --color-background: oklch(0.12 0.02 260);
-    --color-foreground: oklch(0.95 0.02 260);
-    --color-card: oklch(0.15 0.03 260);
-    --color-card-foreground: oklch(0.95 0.02 260);
-    --color-popover: oklch(0.12 0.02 260);
-    --color-popover-foreground: oklch(0.95 0.02 260);
-    --color-primary: oklch(0.7 0.2 200); /* Cyan/Electric Blue */
-    --color-primary-foreground: oklch(0.1 0.02 260);
-    --color-secondary: oklch(0.2 0.05 260);
-    --color-secondary-foreground: oklch(0.9 0.05 260);
-    --color-muted: oklch(0.2 0.04 260);
-    --color-muted-foreground: oklch(0.6 0.05 260);
-    --color-accent: oklch(0.25 0.08 260);
-    --color-accent-foreground: oklch(0.95 0.02 260);
-    --color-destructive: oklch(0.5 0.2 20);
-    --color-border: oklch(0.25 0.04 260);
-    --color-input: oklch(0.2 0.04 260);
-    --color-ring: oklch(0.7 0.2 200);
+    /* Sophisticated Brown Tech Theme */
+    --color-background: oklch(0.14 0.02 45); /* Deep Espresso */
+    --color-foreground: oklch(0.92 0.03 65); /* Warm Cream */
+    --color-card: oklch(0.17 0.03 45);
+    --color-card-foreground: oklch(0.92 0.03 65);
+    --color-popover: oklch(0.14 0.02 45);
+    --color-popover-foreground: oklch(0.92 0.03 65);
+    --color-primary: oklch(0.78 0.14 75); /* Warm Amber / Gold */
+    --color-primary-foreground: oklch(0.15 0.03 45);
+    --color-secondary: oklch(0.22 0.04 45);
+    --color-secondary-foreground: oklch(0.85 0.05 65);
+    --color-muted: oklch(0.2 0.03 45);
+    --color-muted-foreground: oklch(0.65 0.05 65);
+    --color-accent: oklch(0.28 0.08 55);
+    --color-accent-foreground: oklch(0.95 0.02 65);
+    --color-destructive: oklch(0.55 0.22 25);
+    --color-border: oklch(0.26 0.04 45);
+    --color-input: oklch(0.22 0.04 45);
+    --color-ring: oklch(0.78 0.14 75);
     
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
@@ -44,8 +44,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary;
     background-image: 
-      radial-gradient(at 0% 0%, oklch(0.2 0.1 200 / 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, oklch(0.2 0.1 260 / 0.15) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, oklch(0.25 0.08 75 / 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, oklch(0.2 0.05 45 / 0.12) 0px, transparent 50%);
     }
   html {
     @apply scroll-smooth;
@@ -57,17 +57,17 @@
 
 /* Custom Utilities */
 .glass {
-  @apply bg-background/40 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  @apply bg-background/40 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)];
 }
 
 .tech-grid {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, oklch(1 0 0 / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(to right, oklch(1 0 0 / 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.02) 1px, transparent 1px);
 }
 
 .text-glow {
-  text-shadow: 0 0 20px oklch(var(--color-primary) / 0.5);
+  text-shadow: 0 0 25px oklch(var(--color-primary) / 0.4);
 }
 
 .text-balance {
