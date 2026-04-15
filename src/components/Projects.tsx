@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, ArrowRight } from "lucide-react";
 
 const projects = [
   {
@@ -26,11 +26,22 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-background">
-      <div className="container mx-auto max-w-5xl px-6">
-        <div className="mb-16">
+    <section id="projects" className="py-24 bg-background relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none select-none">
+        <div className="absolute top-0 left-0 w-full h-full tech-grid" />
+      </div>
+
+      <div className="container mx-auto max-w-5xl px-6 relative z-10">
+        <div className="mb-16 relative">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "100px" }}
+            viewport={{ once: true }}
+            className="h-1 bg-primary mb-6"
+          />
           <h2 className="text-4xl font-bold tracking-tight mb-4 text-glow">精選專案</h2>
-          <p className="text-muted-foreground max-w-xl">
+          <p className="text-muted-foreground max-w-xl leading-relaxed">
             將「愛好」專業化，展現跨越視覺設計與程式開發的綜合實力。
           </p>
         </div>
@@ -44,16 +55,24 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
             >
-              <Card className="group overflow-hidden border border-primary/10 bg-muted/20 hover:bg-muted/30 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(var(--color-primary),0.1)]">
+              <Card className="group overflow-hidden border border-primary/10 bg-muted/20 hover:bg-muted/30 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(var(--color-primary),0.15)] relative">
+                {/* Card Corner Accents */}
+                <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-primary/0 group-hover:border-primary/40 transition-all duration-500" />
+                <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-primary/0 group-hover:border-primary/40 transition-all duration-500" />
+
                 <div className="relative aspect-video overflow-hidden bg-black">
                   {project.videoId ? (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${project.videoId}?autoplay=0&mute=1&controls=1&rel=0`}
-                      title={project.title}
-                      className="w-full h-full border-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    <div className="w-full h-full relative">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${project.videoId}?autoplay=0&mute=1&controls=1&rel=0`}
+                        title={project.title}
+                        className="w-full h-full border-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                      {/* Video Overlay Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    </div>
                   ) : (
                     <>
                       <img
@@ -68,34 +87,39 @@ export default function Projects() {
                     </>
                   )}
                   <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary/80 backdrop-blur-md text-primary-foreground border-none">
+                    <Badge className="bg-primary/80 backdrop-blur-md text-primary-foreground border-none shadow-lg">
                       {project.subtitle}
                     </Badge>
                   </div>
                 </div>
-                <CardHeader>
+                <CardHeader className="relative">
                   <div className="flex justify-between items-start mb-2">
-                    <Badge variant="outline" className="rounded-full font-mono text-[10px] uppercase tracking-wider border-primary/30 text-primary/80">
+                    <Badge variant="outline" className="rounded-full font-mono text-[10px] uppercase tracking-wider border-primary/30 text-primary/80 bg-primary/5">
                       Project {i + 1}
                     </Badge>
-                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-all group-hover:scale-110" />
                   </div>
                   <CardTitle className="text-2xl font-bold group-hover:text-primary transition-colors">{project.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 relative">
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {project.desc}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-[10px] rounded-full px-2 bg-primary/5 text-primary/70 border-primary/10">
+                      <Badge key={tag} variant="secondary" className="text-[10px] rounded-full px-2 bg-primary/5 text-primary/70 border-primary/10 hover:bg-primary/10 transition-colors cursor-default">
                         {tag}
                       </Badge>
                     ))}
                   </div>
-                  <div className="pt-4 border-t border-primary/10">
-                    <p className="text-xs font-bold uppercase tracking-widest text-primary/60 mb-1">Impact</p>
-                    <p className="text-sm font-medium">{project.value}</p>
+                  <div className="pt-4 border-t border-primary/10 flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-primary/60 mb-1">Impact</p>
+                      <p className="text-sm font-medium">{project.value}</p>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <ArrowRight className="w-4 h-4 text-primary" />
+                    </div>
                   </div>
                 </CardContent>
               </Card>
