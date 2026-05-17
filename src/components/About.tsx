@@ -24,8 +24,8 @@ export default function About() {
             >
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-8 shadow-[0_0_40px_rgba(var(--color-primary),0.15)] group border border-primary/20">
                 <img
-                  src="https://storage.googleapis.com/static-content-prod/2026-04-15/Z_G3W_8XfL_yu-ting-new-photo.jpg"
-                  alt="鄧宇庭"
+                  src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=2070"
+                  alt="正在剪輯影像的開發者"
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
